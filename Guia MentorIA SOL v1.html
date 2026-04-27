@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Acceso — MentorIA SOL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --deep:#04081a;
+  --navy:#070d2a;
+  --cyan:#00d4ff;
+  --violet:#7c3aed;
+  --gold:#f5a623;
+  --gold2:#ffd166;
+  --white:#e8f0fe;
+  --muted:#6b7fa3;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Space Grotesk',sans-serif;
+  background:var(--deep);
+  color:var(--white);
+  overflow-x:hidden;
+}
+
+/* CANVAS BG */
+#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+
+/* NAV DOTS */
+.nav-dots{
+  position:fixed;right:28px;top:50%;transform:translateY(-50%);
+  z-index:100;display:flex;flex-direction:column;gap:10px;
+}
+.nav-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:rgba(255,255,255,0.2);
+  cursor:pointer;transition:all .3s;border:none;
+  position:relative;
+}
+.nav-dot.active{background:var(--cyan);box-shadow:0 0 12px var(--cyan);width:10px;height:10px}
+.nav-dot:hover{background:rgba(0,212,255,0.6)}
+
+/* MENU BTN */
+.menu-btn{
+  position:fixed;left:28px;top:50%;transform:translateY(-50%);
+  z-index:100;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter:blur(12px);
+  border-radius:50px;
+  padding:12px 20px;
+  color:var(--white);
+  font-family:'Space Grotesk',sans-serif;
+  font-size:13px;font-weight:500;
+  cursor:pointer;
+  display:flex;align-items:center;gap:8px;
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  letter-spacing:2px;
+  transition:all .3s;
+}
+.menu-btn:hover{background:rgba(0,212,255,0.1);border-color:rgba(0,212,255,0.4);box-shadow:0 0 20px rgba(0,212,255,0.15)}
+
+/* SOCIAL */
+.social-bar{
+  position:fixed;top:28px;right:60px;
+  z-index:100;display:flex;gap:12px;align-items:center;
+}
+.social-link{
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:14px;
+  cursor:pointer;transition:all .3s;text-decoration:none;
+}
+.social-link:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 12px rgba(0,212,255,0.2)}
+
+/* STEP COUNTER */
+.step-counter{
+  position:fixed;left:28px;bottom:40px;
+  z-index:100;
+  font-family:'Space Mono',monospace;
+  font-size:12px;color:var(--muted);
+  letter-spacing:1px;
+}
+.step-counter span{color:var(--cyan)}
+
+/* SECTIONS */
+.section{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:80px 120px 80px 120px;
+  position:relative;z-index:10;
+}
+
+/* HERO */
+.hero{
+  flex-direction:column;
+  text-align:center;
+  min-height:100vh;
+  padding:0 40px;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(0,212,255,0.08);
+  border:1px solid rgba(0,212,255,0.2);
+  border-radius:100px;
+  padding:8px 20px;
+  font-size:12px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:32px;
+  animation:fadeUp .8s ease both;
+}
+.logo-area{
+  margin-bottom:32px;
+  animation:fadeUp .8s .1s ease both;
+}
+.logo-stars{
+  font-size:48px;margin-bottom:8px;
+  display:block;
+  animation:pulse 3s ease infinite;
+}
+@keyframes pulse{0%,100%{filter:drop-shadow(0 0 8px var(--gold))}50%{filter:drop-shadow(0 0 24px var(--gold)) drop-shadow(0 0 48px rgba(245,166,35,0.4))}}
+.logo-title{
+  font-size:clamp(48px,6vw,80px);font-weight:700;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold2) 50%,var(--gold) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:-1px;line-height:1;
+  text-shadow:none;
+}
+.logo-sub{
+  font-size:15px;color:var(--muted);letter-spacing:4px;margin-top:8px;
+}
+.hero-headline{
+  font-size:clamp(32px,4vw,52px);font-weight:700;
+  line-height:1.15;
+  animation:fadeUp .8s .2s ease both;
+  max-width:800px;
+  margin:0 auto 20px;
+}
+.hero-headline em{
+  font-style:normal;
+  background:linear-gradient(90deg,var(--cyan),var(--violet));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-desc{
+  font-size:18px;color:var(--muted);max-width:560px;margin:0 auto 48px;
+  line-height:1.7;
+  animation:fadeUp .8s .3s ease both;
+}
+.hero-cta{
+  animation:fadeUp .8s .4s ease both;
+}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--cyan),#0088cc);
+  color:#04081a;font-weight:700;font-size:16px;
+  border:none;border-radius:100px;
+  padding:16px 40px;cursor:pointer;
+  transition:all .3s;font-family:'Space Grotesk',sans-serif;
+  box-shadow:0 8px 32px rgba(0,212,255,0.3);
+}
+.btn-primary:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 12px 48px rgba(0,212,255,0.5)}
+.scroll-hint{
+  position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:var(--muted);font-size:12px;letter-spacing:2px;
+  animation:fadeUp .8s .6s ease both;
+}
+.scroll-arrow{
+  width:24px;height:40px;border:2px solid rgba(255,255,255,0.15);
+  border-radius:20px;display:flex;justify-content:center;padding-top:6px;
+}
+.scroll-dot{
+  width:4px;height:8px;background:var(--cyan);border-radius:4px;
+  animation:scrollBounce 1.5s ease infinite;
+}
+@keyframes scrollBounce{0%,100%{transform:translateY(0);opacity:1}50%{transform:translateY(10px);opacity:0.3}}
+
+/* STEP SECTION */
+.step-section{
+  min-height:100vh;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:center;
+  padding:80px 120px;
+  position:relative;z-index:10;
+}
+.step-section.reverse{direction:rtl}
+.step-section.reverse > *{direction:ltr}
+
+.step-info{opacity:0;transform:translateX(-40px);transition:all .8s ease}
+.step-section.reverse .step-info{transform:translateX(40px)}
+.step-info.visible{opacity:1;transform:translateX(0)}
+.step-visual{opacity:0;transform:translateX(40px);transition:all .8s .15s ease}
+.step-section.reverse .step-visual{transform:translateX(-40px)}
+.step-visual.visible{opacity:1;transform:translateX(0)}
+
+.step-number{
+  font-family:'Space Mono',monospace;
+  font-size:13px;letter-spacing:3px;color:var(--cyan);
+  margin-bottom:16px;display:flex;align-items:center;gap:12px;
+}
+.step-number::after{content:'';flex:1;max-width:60px;height:1px;background:linear-gradient(90deg,var(--cyan),transparent)}
+.step-title{
+  font-size:clamp(28px,3vw,42px);font-weight:700;
+  line-height:1.2;margin-bottom:20px;
+}
+.step-desc{
+  font-size:16px;color:#8fa0c0;line-height:1.8;margin-bottom:32px;
+}
+.step-action{
+  display:inline-flex;align-items:center;gap:12px;
+  background:rgba(0,212,255,0.06);
+  border:1px solid rgba(0,212,255,0.2);
+  border-radius:16px;padding:16px 24px;
+  font-size:15px;
+}
+.step-action-icon{
+  width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,var(--cyan),var(--violet));
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+}
+.step-action-label{font-size:12px;color:var(--muted);margin-bottom:2px;letter-spacing:1px}
+.step-action-text{font-weight:600;color:var(--white);font-size:14px}
+
+.code-pill{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(124,58,237,0.15);
+  border:1px solid rgba(124,58,237,0.3);
+  border-radius:10px;padding:10px 18px;
+  font-family:'Space Mono',monospace;font-size:14px;
+  color:var(--gold2);margin-top:12px;
+}
+
+/* SCREENSHOT FRAME */
+.screen-frame{
+  background:linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:24px;
+  padding:16px;
+  position:relative;
+  box-shadow:0 40px 80px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.05),inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.screen-frame::before{
+  content:'';position:absolute;top:-1px;left:20%;right:20%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,212,255,0.4),transparent);
+}
+.screen-dots{display:flex;gap:6px;margin-bottom:12px;padding:0 4px}
+.screen-dot{width:10px;height:10px;border-radius:50%}
+.screen-img{
+  width:100%;border-radius:14px;
+  display:block;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+
+/* FINAL SECTION */
+.final-section{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:80px 40px;
+  position:relative;z-index:10;
+}
+.final-badge{
+  font-size:64px;margin-bottom:24px;
+  animation:celebratePulse 2s ease infinite;
+}
+@keyframes celebratePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.final-title{font-size:clamp(36px,5vw,60px);font-weight:700;margin-bottom:20px;line-height:1.2}
+.final-desc{font-size:18px;color:var(--muted);max-width:560px;line-height:1.7;margin-bottom:48px}
+.steps-complete{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:600px;margin-bottom:48px;
+}
+.step-chip{
+  background:rgba(0,212,255,0.08);
+  border:1px solid rgba(0,212,255,0.15);
+  border-radius:100px;padding:8px 18px;
+  font-size:13px;color:var(--cyan);
+  display:flex;align-items:center;gap:6px;
+}
+
+/* DIVIDER */
+.section-divider{
+  position:relative;z-index:10;
+  display:flex;align-items:center;justify-content:center;
+  padding:40px 120px;
+  gap:24px;
+}
+.divider-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent)}
+.divider-icon{font-size:20px;opacity:0.4}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* GLOW ORBS */
+.orb{
+  position:fixed;border-radius:50%;filter:blur(100px);
+  pointer-events:none;z-index:1;opacity:0.35;
+}
+.orb-1{width:600px;height:600px;background:var(--violet);top:-200px;right:-100px;animation:orbFloat1 20s ease infinite}
+.orb-2{width:500px;height:500px;background:#003366;bottom:-150px;left:-100px;animation:orbFloat2 25s ease infinite}
+.orb-3{width:300px;height:300px;background:rgba(0,212,255,0.3);top:50%;left:50%;animation:orbFloat3 15s ease infinite}
+@keyframes orbFloat1{0%,100%{transform:translate(0,0)}50%{transform:translate(-50px,80px)}}
+@keyframes orbFloat2{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,-60px)}}
+@keyframes orbFloat3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.3)}}
+
+/* PARTICLES */
+.particle{position:fixed;border-radius:50%;pointer-events:none;z-index:1}
+
+/* PROGRESS LINE */
+.progress-line{
+  position:fixed;left:0;top:0;width:3px;height:0%;
+  background:linear-gradient(180deg,var(--cyan),var(--violet));
+  z-index:200;transition:height .1s linear;
+  box-shadow:0 0 8px var(--cyan);
+}
+
+/* HEADER */
+.top-header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:20px 60px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.header-logo{
+  font-size:16px;font-weight:700;color:var(--gold);
+  letter-spacing:1px;display:flex;align-items:center;gap:8px;
+}
+.header-logo span{color:var(--muted);font-weight:400;font-size:13px}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .step-section{grid-template-columns:1fr;gap:40px;padding:60px 32px}
+  .step-section.reverse{direction:ltr}
+  .section{padding:60px 32px}
+  .top-header{padding:16px 32px}
+  .menu-btn{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<div class="progress-line" id="progress-line"></div>
+<canvas id="bg-canvas"></canvas>
+
+<header class="top-header">
+  <div class="header-logo">✦ MentorIA SOL <span>— Guía de Acceso</span></div>
+  <div class="social-bar">
+    <a class="social-link" href="https://guatestar.org" target="_blank" title="GuateStar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    </a>
+    <a class="social-link" href="#" title="Compartir">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+    </a>
+  </div>
+</header>
+
+<div class="nav-dots" id="nav-dots"></div>
+<button class="menu-btn" id="menu-btn">PASOS</button>
+<div class="step-counter" id="step-counter"><span>01</span> / 23</div>
+
+<div id="app"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+const steps = [
+  {
+    number: "PASO 01",
+    title: "Cuenta Claude requerida",
+    desc: "Al abrir el link de MentorIA SOL, aparecerá automáticamente una ventana emergente indicando que necesitas una cuenta de Claude. Esta es la puerta de entrada a tu plataforma.",
+    action: { icon: "🖱️", label: "ACCIÓN", text: 'Haz clic en "Iniciar sesión"' },
+    img: "uploads/1. Al ingresar te pedira cuenta de claude.jpg",
+    color: "#00d4ff",
+  },
+  {
+    number: "PASO 02",
+    title: "Selecciona Google",
+    desc: "En la página de acceso de Claude, elige la opción de Google para iniciar sesión de forma rápida y segura con tu cuenta institucional de GuateStar.",
+    action: { icon: "🔵", label: "ACCIÓN", text: 'Haz clic en "Continuar con Google"' },
+    img: "uploads/2. selecciona google.jpg",
+    color: "#4285f4",
+    reverse: true,
+  },
+  {
+    number: "PASO 03",
+    title: "Ingresa el correo institucional",
+    desc: "En la pantalla de Google, escribe el correo electrónico institucional de MentorIA. Este correo ya está vinculado a tu plataforma de aprendizaje.",
+    action: { icon: "📧", label: "CORREO", text: "mentor.ia@guatestar.org" },
+    img: "uploads/3. agregar correo.jpg",
+    color: "#7c3aed",
+    code: true,
+  },
+  {
+    number: "PASO 04",
+    title: "Ingresa la contraseña",
+    desc: "Escribe la contraseña de acceso de la cuenta institucional de Google. Esta contraseña es compartida para el acceso inicial al sistema.",
+    action: { icon: "🔒", label: "CONTRASEÑA", text: "ec4558d831" },
+    img: "uploads/4. contraseña.jpg",
+    color: "#f5a623",
+    reverse: true,
+    code: true,
+  },
+  {
+    number: "PASO 05",
+    title: "Selecciona Continuar",
+    desc: "Google te mostrará una pantalla de confirmación indicando que estás accediendo a Claude. Revisa que la cuenta sea la correcta y confirma.",
+    action: { icon: "▶️", label: "ACCIÓN", text: 'Haz clic en el botón "Continuar"' },
+    img: "uploads/5. seleecionar continuar.jpg",
+    color: "#00d4ff",
+  },
+  {
+    number: "PASO 06",
+    title: "Crea tu cuenta",
+    desc: "Claude mostrará los términos de uso. Es importante que marques únicamente el primer checkbox (Acepto los Términos). No es necesario marcar el segundo.",
+    action: { icon: "☑️", label: "IMPORTANTE", text: "Solo marca el primer checkbox, luego clic en «Crear cuenta»" },
+    img: "uploads/6. marcar solo acepto y crear cuenta.jpg",
+    color: "#7c3aed",
+    reverse: true,
+  },
+  {
+    number: "PASO 07",
+    title: "Uso personal",
+    desc: "Claude preguntará cómo planeas usar la plataforma. Selecciona la opción de uso personal para configurar tu cuenta correctamente.",
+    action: { icon: "👤", label: "ACCIÓN", text: 'Selecciona "Para uso personal"' },
+    img: "uploads/7. seleccionar para uso personal.jpg",
+    color: "#f5a623",
+  },
+  {
+    number: "PASO 08",
+    title: "Regresa al link original",
+    desc: "Tu cuenta de Claude ya está lista. Ahora regresa al link original de MentorIA SOL y ábrelo nuevamente. Esta vez la plataforma te permitirá el acceso completo.",
+    action: { icon: "🔗", label: "ACCIÓN", text: "Haz clic nuevamente en el link de MentorIA SOL" },
+    img: "uploads/8. dar click nuevamente en el link para que ya le permita ingresar a la plataforma.jpg",
+    color: "#00d4ff",
+    reverse: true,
+  },
+  {
+    number: "PASO 09",
+    title: "Accede con tu usuario",
+    desc: "En la pantalla de inicio de MentorIA SOL, escribe tu nombre de usuario personal y tu contraseña asignada por GuateStar para acceder a tu perfil.",
+    action: { icon: "🌟", label: "ACCIÓN", text: "Escribe tu usuario y contraseña, luego clic en «Ingresar»" },
+    img: "uploads/9. escriba su nombre de usuario y contraseña.jpg",
+    color: "#7c3aed",
+  },
+  {
+    number: "PASO 10",
+    title: "¡Bienvenido a tu Dashboard!",
+    desc: "Has accedido exitosamente. Tu pantalla principal muestra tu nivel, puntos XP, KPIs de habilidades, retos activos, estadísticas y todas las herramientas de tu plataforma de mentoría.",
+    action: { icon: "🚀", label: "¡LISTO!", text: "Explora tu pantalla principal" },
+    img: "uploads/10. Panta principal, y sus partes.jpg",
+    color: "#f5a623",
+    reverse: true,
+  },
+  {
+    number: "SECCIÓN 11",
+    title: "Dashboard — Tu centro de mando",
+    desc: "El Dashboard muestra tu nivel actual, XP acumulado, el monitor de KPIs (Proactividad, Comunicación, Resolución, Confiabilidad, Trabajo en Equipo, Pensamiento Crítico, Resolución de Problemas y Curiosidad), tu reto activo y estadísticas generales.",
+    action: { icon: "📊", label: "INDICADORES", text: "Monitorea tus KPIs y progreso en tiempo real" },
+    img: "uploads/11. Dashboard.jpg",
+    color: "#00d4ff",
+  },
+  {
+    number: "SECCIÓN 12",
+    title: "Mapa de Ruta — Tu expedición",
+    desc: "El Mapa del Tesoro muestra los 12 retos de tu expedición hacia el liderazgo profesional. Los retos en verde están completados, en amarillo están activos (debes subirlos al Repositorio) y los grises están bloqueados hasta completar el anterior.",
+    action: { icon: "🗺️", label: "ESTADO", text: "Verde = Completado · Amarillo = Activo · Gris = Bloqueado" },
+    img: "uploads/12. mapa de ruta.jpg",
+    color: "#7c3aed",
+    reverse: true,
+  },
+  {
+    number: "SECCIÓN 13",
+    title: "Inbox — Correo institucional",
+    desc: "El Inbox corporativo es donde llegan las instrucciones y comunicados de Aura Logistics. Aquí encontrarás los nuevos retos enviados por S.A.M. Los retos bloqueados se desbloquean al completar y subir el reto anterior al Repositorio.",
+    action: { icon: "📬", label: "IMPORTANTE", text: "Completa el reto anterior en el Repositorio para desbloquear el siguiente" },
+    img: "uploads/13. Inbox o correo institucional donde llega informcion de los nuevos retos.jpg",
+    color: "#f5a623",
+  },
+  {
+    number: "SECCIÓN 14",
+    title: "Repositorio — Sube tus entregas",
+    desc: "El Repositorio de Evidencias es donde subes tu trabajo. S.A.M. (Strategic Advisor Manager) lo analiza y da retroalimentación inmediata. Puedes arrastrar archivos (PDF, DOC, TXT, MP4, JPG, PNG) o pegar un enlace de Google Docs, YouTube, GitHub, Canva, etc.",
+    action: { icon: "📁", label: "FORMATOS", text: "PDF · DOC · TXT · MP4 · JPG · PNG · Link web" },
+    img: "uploads/14. Repositorio para subir las tareas o retos terminados.jpg",
+    color: "#00d4ff",
+    reverse: true,
+  },
+  {
+    number: "SECCIÓN 15",
+    title: "Retroalimentación de S.A.M.",
+    desc: "Tras subir tu reto, S.A.M. revisa tu entregable en segundos y entrega una puntuación del 1 al 100 con tres secciones: Lo que hiciste bien, Oportunidades de mejora y Consejo del Manager. Usa este feedback para mejorar en el siguiente reto.",
+    action: { icon: "🤖", label: "PUNTUACIÓN", text: "S.A.M. califica de 1–100 con feedback detallado" },
+    img: "uploads/15. al subir el reto o tarea SAM dara retroalimentacion que ayudara para el siguiente reto.jpg",
+    color: "#7c3aed",
+  },
+  {
+    number: "SECCIÓN 16",
+    title: "Insignias — Tus logros y estrellas",
+    desc: "Las Estrellas se ganan cada 10 minutos trabajando activamente en la plataforma. Las Insignias se desbloquean automáticamente cuando S.A.M. califica tu entregable con 80/100 o más. ¡Hay 20 insignias por desbloquear!",
+    action: { icon: "🏅", label: "REGLAS", text: "⭐ Estrella cada 10 min · 🏅 Insignia con score ≥ 80" },
+    img: "uploads/16. Insginias puedes ver estrellas ganadas (se ganan a cada 10 minutos trabajando) insignias se ganan si logras +80 en retos entregados.jpg",
+    color: "#f5a623",
+    reverse: true,
+  },
+  {
+    number: "SECCIÓN 17",
+    title: "Diario Personal — Reflexión diaria",
+    desc: "El Diario Personal es donde debes anotar todos los días el trabajo que realizaste. Registra cómo te sientes, qué aprendiste, qué dificultad superaste y responde la pregunta del autodidacta. Esto alimenta directamente tus métricas de KPIs.",
+    action: { icon: "📓", label: "HÁBITO DIARIO", text: "Anota tu progreso cada día para mejorar tus KPIs" },
+    img: "uploads/17. Diario Personal debes anotar todos los dias el trabajo que hiciste, esto ayudara en tus metricas de KPIs.jpg",
+    color: "#00d4ff",
+  },
+  {
+    number: "SECCIÓN 18",
+    title: "Biblioteca — Recursos de aprendizaje",
+    desc: "Si no entiendes un reto, palabra o tema, acude a la Biblioteca. Encontrarás videos de YouTube, artículos y podcasts relacionados a cada reto. También puedes elegir el recurso que prefieras consumir y ganar +15 XP adicionales.",
+    action: { icon: "📚", label: "RECURSOS", text: "Video · Artículo · Podcast — Elige tu formato favorito (+15 XP)" },
+    img: "uploads/18. Biblioteca si no entiendes el reto palabras o temas puedes acudir a la bilbioteca para buscar informacion o puedes buscarla tu en internet..jpg",
+    color: "#7c3aed",
+    reverse: true,
+  },
+  {
+    number: "SECCIÓN 19",
+    title: "Mensajes — Comunicación con admin",
+    desc: "En Mensajes puedes enviar dudas o comentarios al administrador del sistema. Para comunicarte con otros compañeros o formar equipo para trabajar en retos, utiliza tu número personal de WhatsApp.",
+    action: { icon: "💬", label: "COMUNICACIÓN", text: "Dudas al admin aquí · Equipo de trabajo por WhatsApp personal" },
+    img: "uploads/19. Puedes enviar mensajes al administrador de cualquier duda o queja. Para comunicarte con otros o formar equipo para trabajar sera por tu numero personal de whatsapp.jpg",
+    color: "#f5a623",
+  },
+  {
+    number: "SECCIÓN 20",
+    title: "Influencia — Retos de compañeros",
+    desc: "En Influencia puedes verificar a tus compañeros de trabajo en la empresa. Ellos te lanzarán retos de inteligencia política y ética que deberás completar respondiendo profesionalmente. Esto mejora tus métricas de KPIs.",
+    action: { icon: "⚡", label: "KPI BOOST", text: "Responde los retos de compañeros para mejorar tus métricas" },
+    img: "uploads/20. Influencia es para poder verificar compañeros de trabajo en la empresa, ellos te lanzaran retos que deberas completar esto te ayudar en tus metricas de KPIs .jpg",
+    color: "#00d4ff",
+    reverse: true,
+  },
+  {
+    number: "SECCIÓN 21",
+    title: "Barra lateral — Accesos rápidos",
+    desc: "La barra lateral izquierda muestra tu perfil, cuántas estrellas e insignias has ganado, el tiempo de sesión activa y todas las secciones de la plataforma. También puedes cambiar entre Modo Oscuro y Modo Claro, y cerrar sesión de forma segura.",
+    action: { icon: "🌙", label: "OPCIONES", text: "Modo Oscuro/Claro · Ver estrellas · Cerrar Sesión" },
+    img: "uploads/21. Barra lateral, ver cuantas estrellas, insignias, cambiar a modo claro u obscuro y cerrar sesion.jpg",
+    color: "#7c3aed",
+  },
+];
+
+const sectionIds = ["hero", ...steps.map((_, i) => `step-${i}`), "final"];
+
+function StepSection({ step, index, activeSection }) {
+  const ref = useRef(null);
+  const infoRef = useRef(null);
+  const visRef = useRef(null);
+  const id = `step-${index}`;
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) {
+        infoRef.current?.classList.add("visible");
+        visRef.current?.classList.add("visible");
+      }
+    }, { threshold: 0.2 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  const colorMap = { "#00d4ff": "cyan", "#7c3aed": "violet", "#f5a623": "gold", "#4285f4": "blue" };
+
+  return (
+    <section id={id} ref={ref} className={`step-section${step.reverse ? " reverse" : ""}`} data-screen-label={step.number}>
+      <div className="step-info" ref={infoRef}>
+        <div className="step-number" style={{ color: step.color }}>{step.number}</div>
+        <h2 className="step-title">{step.title}</h2>
+        <p className="step-desc">{step.desc}</p>
+        <div className="step-action" style={{ borderColor: `${step.color}33`, background: `${step.color}0a` }}>
+          <div className="step-action-icon" style={{ background: `linear-gradient(135deg,${step.color},${step.color}88)` }}>
+            {step.action.icon}
+          </div>
+          <div>
+            <div className="step-action-label">{step.action.label}</div>
+            <div className="step-action-text">{step.action.text}</div>
+          </div>
+        </div>
+        {step.code && (
+          <div className="code-pill" style={{ borderColor: `${step.color}44`, color: step.color }}>
+            <span style={{ opacity: 0.6, fontSize: 11 }}>›</span>
+            {step.action.text}
+          </div>
+        )}
+      </div>
+      <div className="step-visual" ref={visRef}>
+        <div className="screen-frame">
+          <div className="screen-dots">
+            <div className="screen-dot" style={{ background: "#ff5f57" }}></div>
+            <div className="screen-dot" style={{ background: "#febc2e" }}></div>
+            <div className="screen-dot" style={{ background: "#28c840" }}></div>
+          </div>
+          <img src={step.img} alt={step.title} className="screen-img" loading="lazy" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function App() {
+  const [activeSection, setActiveSection] = useState(0);
+
+  useEffect(() => {
+    // Progress bar
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = (scrollTop / docHeight) * 100;
+      document.getElementById("progress-line").style.height = pct + "%";
+
+      // Detect active section
+      const sections = sectionIds.map(id => document.getElementById(id));
+      let active = 0;
+      sections.forEach((el, i) => {
+        if (el && el.getBoundingClientRect().top < window.innerHeight * 0.5) active = i;
+      });
+      setActiveSection(active);
+      const counter = document.getElementById("step-counter");
+      if (counter) {
+        const num = String(active + 1).padStart(2, "0");
+        counter.innerHTML = `<span>${num}</span> / ${sectionIds.length}`;
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    // Nav dots
+    const container = document.getElementById("nav-dots");
+    if (!container) return;
+    container.innerHTML = "";
+    sectionIds.forEach((id, i) => {
+      const btn = document.createElement("button");
+      btn.className = `nav-dot${i === activeSection ? " active" : ""}`;
+      btn.title = i === 0 ? "Inicio" : i === sectionIds.length - 1 ? "Final" : `Paso ${i}`;
+      btn.onclick = () => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      };
+      container.appendChild(btn);
+    });
+  }, [activeSection]);
+
+  useEffect(() => {
+    const btn = document.getElementById("menu-btn");
+    if (btn) {
+      btn.onclick = () => {
+        document.getElementById("step-0")?.scrollIntoView({ behavior: "smooth" });
+      };
+    }
+    // Particles canvas
+    const canvas = document.getElementById("bg-canvas");
+    const ctx = canvas.getContext("2d");
+    let W = canvas.width = window.innerWidth;
+    let H = canvas.height = window.innerHeight;
+    const particles = Array.from({ length: 80 }, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      r: Math.random() * 1.5 + 0.5,
+      vx: (Math.random() - 0.5) * 0.2,
+      vy: -Math.random() * 0.3 - 0.05,
+      alpha: Math.random() * 0.5 + 0.1,
+      color: Math.random() > 0.5 ? "#00d4ff" : "#7c3aed",
+    }));
+    let raf;
+    const animate = () => {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.y < -5) p.y = H + 5;
+        if (p.x < -5) p.x = W + 5;
+        if (p.x > W + 5) p.x = -5;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.color + Math.floor(p.alpha * 255).toString(16).padStart(2,"0");
+        ctx.fill();
+      });
+      raf = requestAnimationFrame(animate);
+    };
+    animate();
+    const handleResize = () => { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; };
+    window.addEventListener("resize", handleResize);
+    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", handleResize); };
+  }, []);
+
+  return (
+    <>
+      {/* HERO */}
+      <section id="hero" className="section hero" data-screen-label="00 Hero">
+        <div className="hero-badge">✦ GUATESTAR · PROGRAMA MENTORES</div>
+        <div className="logo-area">
+          <span className="logo-stars">✦</span>
+          <div className="logo-title">MentorIA SOL</div>
+          <div className="logo-sub">SISTEMA DE APRENDIZAJE — AURA LOGISTICS & TECH</div>
+        </div>
+        <h1 className="hero-headline">Guía de acceso a tu<br/><em>plataforma de mentoría</em></h1>
+        <p className="hero-desc">Sigue estos 10 pasos sencillos para ingresar a MentorIA SOL y comenzar tu camino de desarrollo y liderazgo.</p>
+        <div className="hero-cta">
+          <button className="btn-primary" onClick={() => document.getElementById("step-0")?.scrollIntoView({ behavior: "smooth" })}>
+            <span>Empieza tu camino</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+        <div className="scroll-hint">
+          <span>DESPLÁZATE</span>
+          <div className="scroll-arrow"><div className="scroll-dot"></div></div>
+        </div>
+      </section>
+
+      {/* STEPS */}
+      {steps.map((step, i) => (
+        <React.Fragment key={i}>
+          {i === 0 && (
+            <div className="section-divider">
+              <div className="divider-line"></div>
+              <div className="divider-icon">✦</div>
+              <div style={{ fontSize: 13, letterSpacing: 3, color: "var(--muted)", textTransform: "uppercase" }}>10 Pasos de acceso · 11 Secciones del sistema</div>
+              <div className="divider-icon">✦</div>
+              <div className="divider-line"></div>
+            </div>
+          )}
+          <StepSection step={step} index={i} activeSection={activeSection} />
+        </React.Fragment>
+      ))}
+
+      {/* FINAL */}
+      <section id="final" className="final-section" data-screen-label="11 Final">
+        <div className="final-badge">🌟</div>
+        <h2 className="final-title">¡Ya conoces toda la <span style={{ background: "linear-gradient(90deg,var(--cyan),var(--violet))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>plataforma!</span></h2>
+        <p className="final-desc">Has revisado los 10 pasos de acceso y las 11 secciones de MentorIA SOL. Tu camino de crecimiento, liderazgo y propósito empieza ahora con GuateStar.</p>
+        <div className="steps-complete">
+          {steps.map((s, i) => (
+            <div key={i} className="step-chip">
+              <span>✓</span> {s.number}
+            </div>
+          ))}
+        </div>
+        <button className="btn-primary" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          <span>Ver guía de nuevo</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" transform="rotate(180 12 12)"/></svg>
+        </button>
+        <p style={{ marginTop: 40, color: "var(--muted)", fontSize: 13, letterSpacing: 2 }}>© 2026 GuateStar · MentorIA SOL v2.0</p>
+      </section>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("app")).render(<App />);
+</script>
+</body>
+</html>

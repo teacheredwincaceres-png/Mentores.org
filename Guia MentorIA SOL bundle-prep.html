@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía MentorIA SOL — MENTORES by GuateStar</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<meta name="ext-resource-dependency" content="uploads/2.png" data-resource-id="logo"/>
+<meta name="ext-resource-dependency" content="uploads/1. Al ingresar te pedira cuenta de claude.jpg" data-resource-id="img01"/>
+<meta name="ext-resource-dependency" content="uploads/2. selecciona google.jpg" data-resource-id="img02"/>
+<meta name="ext-resource-dependency" content="uploads/3. agregar correo.jpg" data-resource-id="img03"/>
+<meta name="ext-resource-dependency" content="uploads/4. contraseña.jpg" data-resource-id="img04"/>
+<meta name="ext-resource-dependency" content="uploads/5. seleecionar continuar.jpg" data-resource-id="img05"/>
+<meta name="ext-resource-dependency" content="uploads/6. marcar solo acepto y crear cuenta.jpg" data-resource-id="img06"/>
+<meta name="ext-resource-dependency" content="uploads/7. seleccionar para uso personal.jpg" data-resource-id="img07"/>
+<meta name="ext-resource-dependency" content="uploads/8. dar click nuevamente en el link para que ya le permita ingresar a la plataforma.jpg" data-resource-id="img08"/>
+<meta name="ext-resource-dependency" content="uploads/9. escriba su nombre de usuario y contraseña.jpg" data-resource-id="img09"/>
+<meta name="ext-resource-dependency" content="uploads/10. Panta principal, y sus partes.jpg" data-resource-id="img10"/>
+<meta name="ext-resource-dependency" content="uploads/11. Dashboard.jpg" data-resource-id="img11"/>
+<meta name="ext-resource-dependency" content="uploads/12. mapa de ruta.jpg" data-resource-id="img12"/>
+<meta name="ext-resource-dependency" content="uploads/13. Inbox o correo institucional donde llega informcion de los nuevos retos.jpg" data-resource-id="img13"/>
+<meta name="ext-resource-dependency" content="uploads/14. Repositorio para subir las tareas o retos terminados.jpg" data-resource-id="img14"/>
+<meta name="ext-resource-dependency" content="uploads/15. al subir el reto o tarea SAM dara retroalimentacion que ayudara para el siguiente reto.jpg" data-resource-id="img15"/>
+<meta name="ext-resource-dependency" content="uploads/16. Insginias puedes ver estrellas ganadas (se ganan a cada 10 minutos trabajando) insignias se ganan si logras +80 en retos entregados.jpg" data-resource-id="img16"/>
+<meta name="ext-resource-dependency" content="uploads/17. Diario Personal debes anotar todos los dias el trabajo que hiciste, esto ayudara en tus metricas de KPIs.jpg" data-resource-id="img17"/>
+<meta name="ext-resource-dependency" content="uploads/18. Biblioteca si no entiendes el reto palabras o temas puedes acudir a la bilbioteca para buscar informacion o puedes buscarla tu en internet..jpg" data-resource-id="img18"/>
+<meta name="ext-resource-dependency" content="uploads/19. Puedes enviar mensajes al administrador de cualquier duda o queja. Para comunicarte con otros o formar equipo para trabajar sera por tu numero personal de whatsapp.jpg" data-resource-id="img19"/>
+<meta name="ext-resource-dependency" content="uploads/20. Influencia es para poder verificar compañeros de trabajo en la empresa, ellos te lanzaran retos que deberas completar esto te ayudar en tus metricas de KPIs .jpg" data-resource-id="img20"/>
+<meta name="ext-resource-dependency" content="uploads/21. Barra lateral, ver cuantas estrellas, insignias, cambiar a modo claro u obscuro y cerrar sesion.jpg" data-resource-id="img21"/>
+<template id="__bundler_thumbnail" data-bg-color="#04081a">
+  <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+    <rect width="800" height="500" fill="#04081a"/>
+    <circle cx="400" cy="200" r="120" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.3"/>
+    <circle cx="400" cy="200" r="90" fill="none" stroke="#7c3aed" stroke-width="1" opacity="0.2"/>
+    <circle cx="400" cy="200" r="60" fill="rgba(0,212,255,0.08)" stroke="#00d4ff" stroke-width="1.5" opacity="0.6"/>
+    <text x="400" y="195" text-anchor="middle" fill="#f5a623" font-size="28" font-family="sans-serif" font-weight="700">MENTORES</text>
+    <text x="400" y="222" text-anchor="middle" fill="#00d4ff" font-size="11" font-family="sans-serif" letter-spacing="4">MentorIA SOL</text>
+    <text x="400" y="330" text-anchor="middle" fill="#6b7fa3" font-size="13" font-family="sans-serif" letter-spacing="2">Guía de Acceso · GuateStar</text>
+    <line x1="300" y1="310" x2="500" y2="310" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  </svg>
+</template>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --c0:#04081a; --c1:#00d4ff; --c2:#7c3aed; --c3:#f5a623;
+  --c4:#1a0533; --white:#e8f0fe; --muted:#6b7fa3;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',sans-serif;background:var(--c0);color:var(--white);overflow-x:hidden;cursor:none}
+a,button{cursor:none}
+
+/* CURSOR */
+#cd{position:fixed;width:8px;height:8px;border-radius:50%;background:var(--c1);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:screen}
+#cr{position:fixed;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(0,212,255,0.5);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .12s ease,width .3s,height .3s,border-color .3s}
+body.hovering #cd{width:16px;height:16px;background:var(--c3)}
+body.hovering #cr{width:56px;height:56px;border-color:rgba(245,166,35,0.5)}
+
+/* BG */
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+#section-color{position:fixed;inset:0;z-index:1;pointer-events:none;transition:background 1.2s ease}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3));z-index:200;width:0%;transition:width .1s linear;box-shadow:0 0 10px var(--c1)}
+
+/* HEADER */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:150;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);background:rgba(4,8,26,0.7);border-bottom:1px solid rgba(255,255,255,0.05)}
+.hdr-logo{display:flex;align-items:center;gap:10px}
+.hdr-logo img{height:32px;filter:drop-shadow(0 0 8px rgba(0,212,255,0.4))}
+.hdr-badge{font-size:11px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;padding:4px 12px;border:1px solid rgba(255,255,255,0.08);border-radius:100px}
+.hdr-right{display:flex;gap:10px}
+.icon-btn{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .3s;font-size:13px}
+.icon-btn:hover{border-color:var(--c1);color:var(--c1);box-shadow:0 0 12px rgba(0,212,255,0.2)}
+
+/* TIMELINE NAV */
+.tl-wrap{position:sticky;top:64px;z-index:140;background:rgba(4,8,26,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.05);padding:12px 48px;overflow-x:auto;scrollbar-width:none}
+.tl-wrap::-webkit-scrollbar{display:none}
+.tl{display:flex;align-items:center;gap:0;min-width:max-content}
+.tl-group{display:flex;align-items:center;gap:0}
+.tl-label{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;padding:0 16px;white-space:nowrap}
+.tl-dot{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.15);background:transparent;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);cursor:pointer;transition:all .35s;flex-shrink:0;position:relative}
+.tl-dot:hover{border-color:var(--c1);color:var(--c1);transform:scale(1.2)}
+.tl-dot.active{border-color:var(--c1);background:var(--c1);color:#04081a;font-weight:700;box-shadow:0 0 16px rgba(0,212,255,0.5);transform:scale(1.15)}
+.tl-dot.visited{border-color:rgba(0,212,255,0.35);color:rgba(0,212,255,0.5)}
+.tl-line{width:20px;height:1px;background:rgba(255,255,255,0.08);flex-shrink:0}
+.tl-line.done{background:rgba(0,212,255,0.3)}
+.tl-sep{width:1px;height:20px;background:rgba(255,255,255,0.1);margin:0 8px}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px 120px;position:relative;z-index:10}
+.hero-logo{position:relative;margin-bottom:32px;animation:heroFloat 6s ease-in-out infinite}
+.hero-logo img{width:220px;filter:drop-shadow(0 0 40px rgba(0,212,255,0.35)) drop-shadow(0 0 80px rgba(124,58,237,0.25));transition:filter .5s}
+.hero-logo img:hover{filter:drop-shadow(0 0 60px rgba(0,212,255,0.6)) drop-shadow(0 0 100px rgba(124,58,237,0.4))}
+@keyframes heroFloat{0%,100%{transform:translateY(0) rotate(0deg)}33%{transform:translateY(-12px) rotate(1deg)}66%{transform:translateY(-6px) rotate(-0.5deg)}}
+.hero-ring{position:absolute;inset:-30px;border-radius:50%;border:1px solid rgba(0,212,255,0.1);animation:ringPulse 3s ease infinite}
+.hero-ring2{position:absolute;inset:-60px;border-radius:50%;border:1px solid rgba(124,58,237,0.08);animation:ringPulse 3s 1s ease infinite}
+@keyframes ringPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.08);opacity:0.4}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,212,255,0.07);border:1px solid rgba(0,212,255,0.2);border-radius:100px;padding:7px 20px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--c1);margin-bottom:28px;animation:fadeUp .8s .2s both}
+.hero-title{font-size:clamp(36px,5vw,64px);font-weight:700;line-height:1.1;margin-bottom:16px;animation:fadeUp .8s .35s both}
+.hero-title em{font-style:normal;background:linear-gradient(135deg,var(--c1) 0%,var(--c2) 60%,var(--c3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:17px;color:var(--muted);max-width:520px;line-height:1.75;margin-bottom:48px;animation:fadeUp .8s .5s both;min-height:28px}
+.hero-sub .cursor-blink{display:inline-block;width:2px;height:18px;background:var(--c1);margin-left:2px;animation:blink .7s ease infinite;vertical-align:middle}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;animation:fadeUp .8s .65s both}
+.btn-prim{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--c1),#0088cc);color:#04081a;font-weight:700;font-size:15px;border:none;border-radius:100px;padding:15px 36px;transition:all .3s;font-family:'Space Grotesk',sans-serif;box-shadow:0 8px 32px rgba(0,212,255,0.3)}
+.btn-prim:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 16px 48px rgba(0,212,255,0.5)}
+.btn-sec{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.05);color:var(--white);font-weight:500;font-size:15px;border:1px solid rgba(255,255,255,0.12);border-radius:100px;padding:15px 36px;transition:all .3s;font-family:'Space Grotesk',sans-serif}
+.btn-sec:hover{border-color:var(--c2);background:rgba(124,58,237,0.1);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:48px;margin-top:64px;animation:fadeUp .8s .8s both}
+.h-stat{text-align:center}
+.h-stat-n{font-size:36px;font-weight:700;background:linear-gradient(135deg,var(--c1),var(--c3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.h-stat-l{font-size:12px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+.scroll-cue{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;animation:fadeUp .8s 1s both}
+.scroll-cue span{font-size:10px;letter-spacing:3px;color:var(--muted);text-transform:uppercase}
+.scroll-pill{width:22px;height:38px;border:1.5px solid rgba(255,255,255,0.15);border-radius:20px;display:flex;justify-content:center;align-items:flex-start;padding:5px}
+.scroll-pip{width:4px;height:8px;background:var(--c1);border-radius:4px;animation:pip 1.6s ease infinite}
+@keyframes pip{0%,100%{transform:translateY(0);opacity:1}60%{transform:translateY(10px);opacity:0.2}}
+
+/* DIVIDER */
+.divider{position:relative;z-index:10;display:flex;align-items:center;gap:20px;padding:32px 80px}
+.div-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent)}
+.div-text{font-size:10px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+
+/* STEP SECTION */
+.step-wrap{position:relative;z-index:10;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:80px 80px 80px 100px}
+.step-wrap.rev{padding:80px 100px 80px 80px}
+.step-wrap.rev .step-info{order:2}
+.step-wrap.rev .step-vis{order:1}
+
+.step-info{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s ease}
+.step-info.in{opacity:1;transform:translateY(0)}
+.step-vis{opacity:0;transform:translateY(40px) scale(0.96);transition:opacity .9s .18s ease,transform .9s .18s ease}
+.step-vis.in{opacity:1;transform:translateY(0) scale(1)}
+
+.step-tag{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.step-num{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:3px;font-weight:700}
+.step-cat{font-size:11px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;padding:3px 10px;border:1px solid rgba(255,255,255,0.1);border-radius:100px}
+.step-title{font-size:clamp(26px,2.8vw,40px);font-weight:700;line-height:1.2;margin-bottom:18px}
+.step-desc{font-size:15px;color:#8fa0c0;line-height:1.85;margin-bottom:28px}
+.step-pill{display:inline-flex;align-items:center;gap:12px;border-radius:14px;padding:14px 20px;border:1px solid;font-size:14px}
+.step-pill-icon{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.step-pill-label{font-size:10px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:2px}
+.step-pill-text{font-weight:600;font-size:13px}
+.code-tag{display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:13px;margin-top:10px;padding:8px 16px;border-radius:8px;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.25);color:#c4b5fd;letter-spacing:.5px}
+
+/* SCREEN FRAME / 3D TILT */
+.frame-wrap{perspective:1000px;cursor:pointer}
+.frame-wrap:hover .frame-glow{opacity:1}
+.frame{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:14px;transition:transform .08s ease;transform-style:preserve-3d;position:relative;box-shadow:0 40px 80px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.07)}
+.frame::before{content:'';position:absolute;top:-1px;left:15%;right:15%;height:1px;border-radius:1px}
+.frame-dots{display:flex;gap:6px;margin-bottom:10px;padding:0 2px}
+.frame-dot{width:9px;height:9px;border-radius:50%}
+.frame-img{width:100%;border-radius:10px;display:block;transition:transform .4s ease}
+.frame-wrap:hover .frame-img{transform:scale(1.01)}
+.frame-glow{position:absolute;inset:-2px;border-radius:22px;opacity:0;transition:opacity .4s;pointer-events:none;z-index:-1}
+.frame-hint{position:absolute;bottom:20px;right:20px;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);border-radius:8px;padding:6px 12px;font-size:11px;color:var(--muted);letter-spacing:1px;opacity:0;transition:opacity .3s}
+.frame-wrap:hover .frame-hint{opacity:1}
+
+/* MODAL */
+.modal-bg{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.92);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;padding:40px;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-bg.open{opacity:1;pointer-events:all}
+.modal-img{max-width:90vw;max-height:85vh;border-radius:16px;box-shadow:0 40px 100px rgba(0,0,0,0.8);transform:scale(0.9);transition:transform .3s ease}
+.modal-bg.open .modal-img{transform:scale(1)}
+.modal-close{position:absolute;top:24px;right:24px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:var(--white);font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s}
+.modal-close:hover{background:rgba(255,255,255,0.2);transform:scale(1.1)}
+
+/* FINAL */
+.final{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px;position:relative;z-index:10}
+.final-logo{width:120px;margin-bottom:32px;filter:drop-shadow(0 0 30px rgba(0,212,255,0.3));animation:heroFloat 5s ease infinite}
+.final-title{font-size:clamp(32px,4vw,56px);font-weight:700;margin-bottom:16px;line-height:1.2}
+.final-desc{font-size:17px;color:var(--muted);max-width:520px;line-height:1.75;margin-bottom:48px}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:680px;margin-bottom:48px}
+.chip{font-size:12px;color:var(--c1);padding:6px 16px;border-radius:100px;background:rgba(0,212,255,0.07);border:1px solid rgba(0,212,255,0.15);display:flex;align-items:center;gap:6px}
+.chip.gold{color:var(--c3);background:rgba(245,166,35,0.07);border-color:rgba(245,166,35,0.2)}
+
+/* SIDE NAV */
+.side-nav{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:8px}
+.s-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;cursor:pointer;transition:all .35s;padding:0}
+.s-dot.active{background:var(--c1);box-shadow:0 0 10px var(--c1);transform:scale(1.4)}
+.s-dot.visited{background:rgba(0,212,255,0.3)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* AMBIENT ORBS */
+.orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:1;opacity:.28}
+.o1{width:700px;height:700px;background:var(--c2);top:-200px;right:-150px;animation:o1f 22s ease infinite}
+.o2{width:500px;height:500px;background:#002244;bottom:-100px;left:-100px;animation:o2f 28s ease infinite}
+@keyframes o1f{0%,100%{transform:translate(0,0)}50%{transform:translate(-80px,100px)}}
+@keyframes o2f{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,-80px)}}
+
+@media(max-width:900px){
+  .step-wrap,.step-wrap.rev{grid-template-columns:1fr;gap:40px;padding:60px 28px}
+  .step-wrap.rev .step-info{order:1}
+  .step-wrap.rev .step-vis{order:2}
+  .hero-stats{gap:28px}
+  .divider{padding:24px 28px}
+  .hdr{padding:14px 24px}
+  .tl-wrap{padding:10px 24px}
+  .side-nav{display:none}
+}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+<div id="cd"></div>
+<div id="cr"></div>
+<div id="section-color"></div>
+<div id="prog"></div>
+<div id="app"></div>
+
+<script type="text/babel">
+const {useState,useEffect,useRef,useCallback}=React;
+
+/* ── DATA ── */
+const R=window.__resources||{};
+const STEPS=[
+  {num:"01",cat:"Acceso",title:"Cuenta Claude requerida",desc:"Al abrir el link de MentorIA SOL aparece una ventana emergente indicando que necesitas una cuenta de Claude. Es la puerta de entrada a tu plataforma.",action:{icon:"🖱️",label:"ACCIÓN",text:'Haz clic en "Iniciar sesión"'},img:R.img01||"uploads/1. Al ingresar te pedira cuenta de claude.jpg",color:"#00d4ff"},
+  {num:"02",cat:"Acceso",title:"Selecciona Google",desc:"En la página de Claude elige la opción de Google para iniciar sesión de forma rápida y segura con tu cuenta institucional de GuateStar.",action:{icon:"🔵",label:"ACCIÓN",text:'Haz clic en "Continuar con Google"'},img:R.img02||"uploads/2. selecciona google.jpg",color:"#4285f4",rev:true},
+  {num:"03",cat:"Acceso",title:"Correo institucional",desc:"En la pantalla de Google escribe el correo institucional de MentorIA. Este correo ya está vinculado a tu plataforma de aprendizaje.",action:{icon:"📧",label:"CORREO",text:"mentor.ia@guatestar.org"},img:R.img03||"uploads/3. agregar correo.jpg",color:"#7c3aed",code:true},
+  {num:"04",cat:"Acceso",title:"Ingresa la contraseña",desc:"Escribe la contraseña de acceso de la cuenta institucional de Google. Esta contraseña es compartida para el acceso inicial al sistema.",action:{icon:"🔒",label:"CONTRASEÑA",text:"ec4558d831"},img:R.img04||"uploads/4. contraseña.jpg",color:"#f5a623",rev:true,code:true},
+  {num:"05",cat:"Acceso",title:"Selecciona Continuar",desc:"Google te mostrará una pantalla de confirmación. Verifica que la cuenta sea la correcta y confirma tu acceso a Claude.",action:{icon:"▶️",label:"ACCIÓN",text:'Clic en "Continuar"'},img:R.img05||"uploads/5. seleecionar continuar.jpg",color:"#00d4ff"},
+  {num:"06",cat:"Acceso",title:"Crea tu cuenta",desc:"Claude mostrará los términos de uso. Marca únicamente el primer checkbox (Acepto los Términos). No es necesario marcar el segundo.",action:{icon:"☑️",label:"IMPORTANTE",text:"Solo primer checkbox → «Crear cuenta»"},img:R.img06||"uploads/6. marcar solo acepto y crear cuenta.jpg",color:"#7c3aed",rev:true},
+  {num:"07",cat:"Acceso",title:"Uso personal",desc:"Claude preguntará cómo planeas usar la plataforma. Selecciona la opción de uso personal para configurar tu cuenta correctamente.",action:{icon:"👤",label:"ACCIÓN",text:'Selecciona "Para uso personal"'},img:R.img07||"uploads/7. seleccionar para uso personal.jpg",color:"#f5a623"},
+  {num:"08",cat:"Acceso",title:"Regresa al link original",desc:"Tu cuenta Claude ya está lista. Regresa al link original de MentorIA SOL y ábrelo nuevamente — ahora la plataforma te dará acceso completo.",action:{icon:"🔗",label:"ACCIÓN",text:"Clic nuevamente en el link de MentorIA SOL"},img:R.img08||"uploads/8. dar click nuevamente en el link para que ya le permita ingresar a la plataforma.jpg",color:"#00d4ff",rev:true},
+  {num:"09",cat:"Acceso",title:"Accede con tu usuario",desc:"En la pantalla de MentorIA SOL escribe tu nombre de usuario personal y tu contraseña asignada por GuateStar.",action:{icon:"🌟",label:"ACCIÓN",text:"Usuario + Contraseña → «Ingresar»"},img:R.img09||"uploads/9. escriba su nombre de usuario y contraseña.jpg",color:"#7c3aed"},
+  {num:"10",cat:"Acceso",title:"¡Bienvenido al Dashboard!",desc:"¡Acceso exitoso! Tu pantalla principal muestra nivel, XP, KPIs, reto activo y estadísticas. Tu camino comienza aquí.",action:{icon:"🚀",label:"¡LISTO!",text:"Explora tu pantalla principal"},img:R.img10||"uploads/10. Panta principal, y sus partes.jpg",color:"#f5a623",rev:true},
+  {num:"11",cat:"Plataforma",title:"Dashboard — Centro de mando",desc:"El Dashboard muestra tu nivel actual, XP acumulado, el Pulse Monitor de KPIs (Proactividad, Comunicación, Resolución, Confiabilidad, Trabajo en Equipo, Pensamiento Crítico, Resolución de Problemas y Curiosidad), tu reto activo y estadísticas.",action:{icon:"📊",label:"INDICADORES",text:"Monitorea tus KPIs y progreso en tiempo real"},img:R.img11||"uploads/11. Dashboard.jpg",color:"#00d4ff"},
+  {num:"12",cat:"Plataforma",title:"Mapa de Ruta — Tu expedición",desc:"El Mapa del Tesoro muestra los 12 retos de tu expedición. Verde = completado, Amarillo = activo (sube al Repositorio), Gris = bloqueado hasta completar el anterior.",action:{icon:"🗺️",label:"ESTADO",text:"Verde · Amarillo · Gris — 3 estados"},img:R.img12||"uploads/12. mapa de ruta.jpg",color:"#7c3aed",rev:true},
+  {num:"13",cat:"Plataforma",title:"Inbox — Correo institucional",desc:"El Inbox corporativo es donde llegan las instrucciones y comunicados de Aura Logistics con los nuevos retos enviados por S.A.M. Los retos se desbloquean al completar y subir el anterior.",action:{icon:"📬",label:"IMPORTANTE",text:"Completa el reto anterior en Repositorio para desbloquear"},img:R.img13||"uploads/13. Inbox o correo institucional donde llega informcion de los nuevos retos.jpg",color:"#f5a623"},
+  {num:"14",cat:"Plataforma",title:"Repositorio — Sube tus entregas",desc:"Aquí subes tu trabajo. S.A.M. lo analiza y da retroalimentación inmediata. Arrastra archivos (PDF, DOC, TXT, MP4, JPG, PNG) o pega un enlace de Google Docs, YouTube, GitHub, Canva, etc.",action:{icon:"📁",label:"FORMATOS",text:"PDF · DOC · TXT · MP4 · JPG · Link web"},img:R.img14||"uploads/14. Repositorio para subir las tareas o retos terminados.jpg",color:"#00d4ff",rev:true},
+  {num:"15",cat:"Plataforma",title:"Retroalimentación de S.A.M.",desc:"Tras subir tu reto, S.A.M. entrega puntuación 1–100 con: Lo que hiciste bien, Oportunidades de mejora y Consejo del Manager. Úsalo para crecer en cada reto.",action:{icon:"🤖",label:"PUNTUACIÓN",text:"S.A.M. califica de 1–100 con feedback detallado"},img:R.img15||"uploads/15. al subir el reto o tarea SAM dara retroalimentacion que ayudara para el siguiente reto.jpg",color:"#7c3aed"},
+  {num:"16",cat:"Plataforma",title:"Insignias — Logros y estrellas",desc:"Las Estrellas se ganan cada 10 minutos trabajando activamente. Las Insignias se desbloquean cuando S.A.M. califica tu entregable con 80/100 o más. ¡20 insignias por desbloquear!",action:{icon:"🏅",label:"REGLAS",text:"⭐ Estrella c/ 10 min · 🏅 Insignia con score ≥ 80"},img:R.img16||"uploads/16. Insginias puedes ver estrellas ganadas (se ganan a cada 10 minutos trabajando) insignias se ganan si logras +80 en retos entregados.jpg",color:"#f5a623",rev:true},
+  {num:"17",cat:"Plataforma",title:"Diario Personal — Reflexión diaria",desc:"Anota todos los días el trabajo realizado: cómo te sientes, qué aprendiste, qué dificultad superaste y responde la pregunta del autodidacta. Esto alimenta directamente tus KPIs.",action:{icon:"📓",label:"HÁBITO DIARIO",text:"Anota tu progreso cada día para mejorar tus KPIs"},img:R.img17||"uploads/17. Diario Personal debes anotar todos los dias el trabajo que hiciste, esto ayudara en tus metricas de KPIs.jpg",color:"#00d4ff"},
+  {num:"18",cat:"Plataforma",title:"Biblioteca — Recursos de aprendizaje",desc:"Si no entiendes un reto, acude a la Biblioteca. Encontrarás videos, artículos y podcasts por reto. Elige tu formato favorito y gana +15 XP adicionales.",action:{icon:"📚",label:"RECURSOS",text:"Video · Artículo · Podcast (+15 XP)"},img:R.img18||"uploads/18. Biblioteca si no entiendes el reto palabras o temas puedes acudir a la bilbioteca para buscar informacion o puedes buscarla tu en internet..jpg",color:"#7c3aed",rev:true},
+  {num:"19",cat:"Plataforma",title:"Mensajes — Comunicación",desc:"Envía dudas o comentarios al administrador. Para comunicarte con compañeros o formar equipo para trabajar en retos, utiliza tu número personal de WhatsApp.",action:{icon:"💬",label:"COMUNICACIÓN",text:"Dudas al admin aquí · Equipo por WhatsApp personal"},img:R.img19||"uploads/19. Puedes enviar mensajes al administrador de cualquier duda o queja. Para comunicarte con otros o formar equipo para trabajar sera por tu numero personal de whatsapp.jpg",color:"#f5a623"},
+  {num:"20",cat:"Plataforma",title:"Influencia — Retos de compañeros",desc:"Verifica a tus compañeros en la empresa. Ellos te lanzarán retos de inteligencia política y ética que deberás completar respondiendo profesionalmente. Mejora tus KPIs.",action:{icon:"⚡",label:"KPI BOOST",text:"Responde retos de compañeros para mejorar métricas"},img:R.img20||"uploads/20. Influencia es para poder verificar compañeros de trabajo en la empresa, ellos te lanzaran retos que deberas completar esto te ayudar en tus metricas de KPIs .jpg",color:"#00d4ff",rev:true},
+  {num:"21",cat:"Plataforma",title:"Barra lateral — Accesos rápidos",desc:"La barra lateral muestra tu perfil, estrellas, insignias, tiempo de sesión y todas las secciones. Cambia entre Modo Oscuro y Modo Claro, y cierra sesión de forma segura.",action:{icon:"🌙",label:"OPCIONES",text:"Modo Oscuro/Claro · Ver estrellas · Cerrar Sesión"},img:R.img21||"uploads/21. Barra lateral, ver cuantas estrellas, insignias, cambiar a modo claro u obscuro y cerrar sesion.jpg",color:"#7c3aed"},
+];
+
+const ALL_IDS=["hero",...STEPS.map((_,i)=>`s${i}`),"final"];
+const BG_COLORS={
+  "#00d4ff":"radial-gradient(ellipse at 70% 50%,rgba(0,60,90,0.35) 0%,transparent 70%)",
+  "#7c3aed":"radial-gradient(ellipse at 70% 50%,rgba(50,10,100,0.35) 0%,transparent 70%)",
+  "#f5a623":"radial-gradient(ellipse at 70% 50%,rgba(80,40,0,0.35) 0%,transparent 70%)",
+  "#4285f4":"radial-gradient(ellipse at 70% 50%,rgba(10,30,80,0.35) 0%,transparent 70%)",
+};
+
+/* ── CURSOR ── */
+function Cursor(){
+  const dx=useRef(0),dy=useRef(0),rx=useRef(0),ry=useRef(0),raf=useRef(null);
+  useEffect(()=>{
+    const cd=document.getElementById("cd"),cr=document.getElementById("cr");
+    const move=e=>{dx.current=e.clientX;dy.current=e.clientY};
+    const lerp=(a,b,t)=>a+(b-a)*t;
+    const tick=()=>{
+      rx.current=lerp(rx.current,dx.current,0.12);
+      ry.current=lerp(ry.current,dy.current,0.12);
+      if(cd){cd.style.left=dx.current+"px";cd.style.top=dy.current+"px";}
+      if(cr){cr.style.left=rx.current+"px";cr.style.top=ry.current+"px";}
+      raf.current=requestAnimationFrame(tick);
+    };
+    const over=e=>{if(e.target.closest("button,a,.frame-wrap"))document.body.classList.add("hovering");else document.body.classList.remove("hovering")};
+    window.addEventListener("mousemove",move);
+    window.addEventListener("mouseover",over);
+    raf.current=requestAnimationFrame(tick);
+    return()=>{window.removeEventListener("mousemove",move);window.removeEventListener("mouseover",over);cancelAnimationFrame(raf.current)};
+  },[]);
+  return null;
+}
+
+/* ── TYPEWRITER ── */
+function useTypewriter(text,speed=38,delay=600){
+  const [displayed,setDisplayed]=useState("");
+  const [done,setDone]=useState(false);
+  useEffect(()=>{
+    setDisplayed("");setDone(false);
+    let i=0,t;
+    const start=setTimeout(()=>{
+      t=setInterval(()=>{
+        i++;setDisplayed(text.slice(0,i));
+        if(i>=text.length){clearInterval(t);setDone(true);}
+      },speed);
+    },delay);
+    return()=>{clearTimeout(start);clearInterval(t)};
+  },[text]);
+  return[displayed,done];
+}
+
+/* ── PARTICLES ── */
+function useParticles(){
+  useEffect(()=>{
+    const c=document.getElementById("bg-canvas");
+    if(!c)return;
+    const ctx=c.getContext("2d");
+    let W=c.width=window.innerWidth,H=c.height=window.innerHeight;
+    const pts=Array.from({length:90},()=>({
+      x:Math.random()*W,y:Math.random()*H,
+      r:Math.random()*1.4+.4,
+      vx:(Math.random()-.5)*.18,vy:-Math.random()*.25-.05,
+      a:Math.random()*.45+.08,
+      col:Math.random()>.55?"#00d4ff":"#7c3aed"
+    }));
+    let raf;
+    const draw=()=>{
+      ctx.clearRect(0,0,W,H);
+      pts.forEach(p=>{
+        p.x+=p.vx;p.y+=p.vy;
+        if(p.y<-4)p.y=H+4;
+        if(p.x<-4)p.x=W+4;
+        if(p.x>W+4)p.x=-4;
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle=p.col+Math.floor(p.a*255).toString(16).padStart(2,"0");
+        ctx.fill();
+      });
+      raf=requestAnimationFrame(draw);
+    };
+    draw();
+    const rs=()=>{W=c.width=window.innerWidth;H=c.height=window.innerHeight};
+    window.addEventListener("resize",rs);
+    return()=>{cancelAnimationFrame(raf);window.removeEventListener("resize",rs)};
+  },[]);
+}
+
+/* ── 3D TILT ── */
+function TiltFrame({img,title,color,onZoom}){
+  const ref=useRef(null);
+  const glowRef=useRef(null);
+  const onMove=useCallback(e=>{
+    const el=ref.current;if(!el)return;
+    const r=el.getBoundingClientRect();
+    const x=((e.clientX-r.left)/r.width-.5)*18;
+    const y=-((e.clientY-r.top)/r.height-.5)*14;
+    el.style.transform=`perspective(900px) rotateY(${x}deg) rotateX(${y}deg) scale(1.02)`;
+    if(glowRef.current){glowRef.current.style.background=`radial-gradient(ellipse at ${((e.clientX-r.left)/r.width)*100}% ${((e.clientY-r.top)/r.height)*100}%,${color}33,transparent 70%)`;}
+  },[color]);
+  const onLeave=useCallback(()=>{
+    if(ref.current)ref.current.style.transform="perspective(900px) rotateY(0deg) rotateX(0deg) scale(1)";
+    if(glowRef.current)glowRef.current.style.background="none";
+  },[]);
+  const c=color||"#00d4ff";
+  return(
+    <div className="frame-wrap" onMouseMove={onMove} onMouseLeave={onLeave} onClick={()=>onZoom(img,title)}>
+      <div className="frame" ref={ref} style={{"--fc":c}}>
+        <div className="frame-glow" ref={glowRef}></div>
+        <div style={{position:"absolute",top:-1,left:"15%",right:"15%",height:1,background:`linear-gradient(90deg,transparent,${c}55,transparent)`}}></div>
+        <div className="frame-dots">
+          <div className="frame-dot" style={{background:"#ff5f57"}}></div>
+          <div className="frame-dot" style={{background:"#febc2e"}}></div>
+          <div className="frame-dot" style={{background:"#28c840"}}></div>
+        </div>
+        <img src={img} alt={title} className="frame-img" loading="lazy"/>
+        <div className="frame-hint">CLIC PARA AMPLIAR ↗</div>
+      </div>
+    </div>
+  );
+}
+
+/* ── STEP SECTION ── */
+function StepSection({step,index,onZoom}){
+  const infoRef=useRef(null),visRef=useRef(null);
+  useEffect(()=>{
+    const obs=new IntersectionObserver(([e])=>{
+      if(e.isIntersecting){infoRef.current?.classList.add("in");visRef.current?.classList.add("in");}
+    },{threshold:0.2});
+    const el=document.getElementById(`s${index}`);
+    if(el)obs.observe(el);
+    return()=>obs.disconnect();
+  },[index]);
+  const c=step.color||"#00d4ff";
+  return(
+    <section id={`s${index}`} className={`step-wrap${step.rev?" rev":""}`} data-screen-label={`${step.num} ${step.title}`}>
+      <div className="step-info" ref={infoRef}>
+        <div className="step-tag">
+          <span className="step-num" style={{color:c}}>{step.num}</span>
+          <span className="step-cat">{step.cat}</span>
+        </div>
+        <h2 className="step-title">{step.title}</h2>
+        <p className="step-desc">{step.desc}</p>
+        <div className="step-pill" style={{borderColor:`${c}33`,background:`${c}0a`}}>
+          <div className="step-pill-icon" style={{background:`linear-gradient(135deg,${c},${c}88)`}}>{step.action.icon}</div>
+          <div>
+            <div className="step-pill-label">{step.action.label}</div>
+            <div className="step-pill-text">{step.action.text}</div>
+          </div>
+        </div>
+        {step.code&&<div className="code-tag"><span style={{opacity:.5,fontSize:10}}>›_</span>{step.action.text}</div>}
+      </div>
+      <div className="step-vis" ref={visRef}>
+        <TiltFrame img={step.img} title={step.title} color={c} onZoom={onZoom}/>
+      </div>
+    </section>
+  );
+}
+
+/* ── MODAL ── */
+function Modal({src,title,onClose}){
+  useEffect(()=>{
+    const esc=e=>{if(e.key==="Escape")onClose()};
+    window.addEventListener("keydown",esc);
+    return()=>window.removeEventListener("keydown",esc);
+  },[onClose]);
+  return(
+    <div className={`modal-bg${src?" open":""}`} onClick={e=>{if(e.target.className.includes("modal-bg"))onClose()}}>
+      {src&&<img src={src} alt={title} className="modal-img"/>}
+      <button className="modal-close" onClick={onClose}>✕</button>
+    </div>
+  );
+}
+
+/* ── HERO ── */
+function Hero({onStart}){
+  const [tw,done]=useTypewriter("Sigue estos pasos para ingresar a MentorIA SOL y comenzar tu camino de liderazgo con GuateStar.",40,900);
+  return(
+    <section id="hero" className="hero" data-screen-label="00 Hero">
+      <div className="hero-badge">✦ GUATESTAR · PROGRAMA MENTORES · 2026</div>
+      <div className="hero-logo">
+        <div className="hero-ring"></div>
+        <div className="hero-ring2"></div>
+        <img src={R.logo||"uploads/2.png"} alt="MENTORES by GuateStar"/>
+      </div>
+      <h1 className="hero-title">Guía de acceso a<br/><em>MentorIA SOL</em></h1>
+      <p className="hero-sub">{tw}{!done&&<span className="cursor-blink"></span>}</p>
+      <div className="hero-cta">
+        <button className="btn-prim" onClick={onStart}>
+          Empieza tu camino
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <button className="btn-sec" onClick={()=>document.getElementById("s10")?.scrollIntoView({behavior:"smooth"})}>
+          Ver la plataforma
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+        </button>
+      </div>
+      <div className="hero-stats">
+        <div className="h-stat"><div className="h-stat-n">10</div><div className="h-stat-l">Pasos de acceso</div></div>
+        <div className="h-stat"><div className="h-stat-n">11</div><div className="h-stat-l">Secciones del sistema</div></div>
+        <div className="h-stat"><div className="h-stat-n">12</div><div className="h-stat-l">Retos de expedición</div></div>
+      </div>
+      <div className="scroll-cue">
+        <span>Desplázate</span>
+        <div className="scroll-pill"><div className="scroll-pip"></div></div>
+      </div>
+    </section>
+  );
+}
+
+/* ── APP ── */
+function App(){
+  const [active,setActive]=useState(0);
+  const [modal,setModal]=useState({src:null,title:null});
+  useParticles();
+
+  useEffect(()=>{
+    const onScroll=()=>{
+      const pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+      const pb=document.getElementById("prog");
+      if(pb)pb.style.width=pct+"%";
+      let cur=0;
+      ALL_IDS.forEach((id,i)=>{
+        const el=document.getElementById(id);
+        if(el&&el.getBoundingClientRect().top<window.innerHeight*.55)cur=i;
+      });
+      setActive(cur);
+      // bg color
+      const sc=document.getElementById("section-color");
+      if(sc){
+        const step=STEPS[cur-1];
+        const col=step?step.color:"#00d4ff";
+        sc.style.background=BG_COLORS[col]||BG_COLORS["#00d4ff"];
+      }
+    };
+    window.addEventListener("scroll",onScroll,{passive:true});
+    return()=>window.removeEventListener("scroll",onScroll);
+  },[]);
+
+  const goTo=i=>document.getElementById(ALL_IDS[i])?.scrollIntoView({behavior:"smooth"});
+
+  return(
+    <>
+      <Cursor/>
+      {/* HEADER */}
+      <header className="hdr">
+        <div className="hdr-logo">
+          <img src={R.logo||"uploads/2.png"} alt="MENTORES"/>
+          <span style={{fontSize:14,fontWeight:600,color:"#e8f0fe"}}>MentorIA SOL</span>
+        </div>
+        <div className="hdr-badge">Guía de acceso</div>
+        <div className="hdr-right">
+          <button className="icon-btn" onClick={()=>goTo(0)} title="Inicio">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          </button>
+          <button className="icon-btn" onClick={()=>goTo(ALL_IDS.length-1)} title="Final">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+        </div>
+      </header>
+
+      {/* TIMELINE */}
+      <div className="tl-wrap">
+        <div className="tl">
+          <span className="tl-label">ACCESO</span>
+          {STEPS.slice(0,10).map((s,i)=>(
+            <React.Fragment key={i}>
+              <button className={`tl-dot${active===i+1?" active":active>i+1?" visited":""}`} onClick={()=>goTo(i+1)} title={s.title}>{s.num}</button>
+              {i<9&&<div className={`tl-line${active>i+1?" done":""}`}></div>}
+            </React.Fragment>
+          ))}
+          <div className="tl-sep"></div>
+          <span className="tl-label">PLATAFORMA</span>
+          {STEPS.slice(10).map((s,i)=>(
+            <React.Fragment key={i+10}>
+              <button className={`tl-dot${active===i+11?" active":active>i+11?" visited":""}`} onClick={()=>goTo(i+11)} title={s.title} style={active===i+11?{background:"var(--c3)",borderColor:"var(--c3)",boxShadow:"0 0 16px rgba(245,166,35,0.5)"}:{}}>{s.num}</button>
+              {i<10&&<div className={`tl-line${active>i+11?" done":""}`}></div>}
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+
+      {/* SIDE NAV DOTS */}
+      <nav className="side-nav">
+        {ALL_IDS.map((id,i)=>(
+          <button key={id} className={`s-dot${active===i?" active":active>i?" visited":""}`} onClick={()=>goTo(i)} title={i===0?"Inicio":i===ALL_IDS.length-1?"Final":`Paso ${i}`}/>
+        ))}
+      </nav>
+
+      {/* HERO */}
+      <Hero onStart={()=>goTo(1)}/>
+
+      {/* DIVIDER - ACCESO */}
+      <div className="divider">
+        <div className="div-line"></div>
+        <span className="div-text">✦ Pasos de acceso — 01 al 10</span>
+        <div className="div-line"></div>
+      </div>
+
+      {/* STEPS 1-10 */}
+      {STEPS.slice(0,10).map((s,i)=>(
+        <StepSection key={i} step={s} index={i} onZoom={(src,title)=>setModal({src,title})}/>
+      ))}
+
+      {/* DIVIDER - PLATAFORMA */}
+      <div className="divider" style={{paddingTop:40}}>
+        <div className="div-line"></div>
+        <span className="div-text" style={{color:"var(--c3)"}}>✦ Secciones de la plataforma — 11 al 21</span>
+        <div className="div-line"></div>
+      </div>
+
+      {/* STEPS 11-21 */}
+      {STEPS.slice(10).map((s,i)=>(
+        <StepSection key={i+10} step={s} index={i+10} onZoom={(src,title)=>setModal({src,title})}/>
+      ))}
+
+      {/* FINAL */}
+      <section id="final" className="final" data-screen-label="22 Final">
+        <img src={R.logo||"uploads/2.png"} alt="MENTORES" className="final-logo"/>
+        <h2 className="final-title">¡Ya conoces toda la <span style={{background:"linear-gradient(90deg,var(--c1),var(--c2))",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>plataforma!</span></h2>
+        <p className="final-desc">Revisaste los 10 pasos de acceso y las 11 secciones de MentorIA SOL. Tu camino de liderazgo y propósito empieza ahora con GuateStar.</p>
+        <div className="chips">
+          {STEPS.slice(0,10).map((s,i)=><div key={i} className="chip">✓ {s.title}</div>)}
+          {STEPS.slice(10).map((s,i)=><div key={i+10} className="chip gold">✓ {s.title}</div>)}
+        </div>
+        <button className="btn-prim" onClick={()=>window.scrollTo({top:0,behavior:"smooth"})}>
+          Ver guía de nuevo
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" transform="rotate(180 12 12)"/></svg>
+        </button>
+        <p style={{marginTop:40,color:"var(--muted)",fontSize:12,letterSpacing:2,textTransform:"uppercase"}}>© 2026 GuateStar · MentorIA SOL v2.0</p>
+      </section>
+
+      {/* MODAL */}
+      <Modal src={modal.src} title={modal.title} onClose={()=>setModal({src:null,title:null})}/>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("app")).render(<App/>);
+</script>
+</body>
+</html>
